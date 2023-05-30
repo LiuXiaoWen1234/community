@@ -102,6 +102,7 @@ public class UserService implements CommunityConstant {
         return map;
     }
 
+
     public int activation(int userId, String code){
         User user = userMapper.selectById(userId);
 
@@ -114,6 +115,7 @@ public class UserService implements CommunityConstant {
             return ACTIVATION_FAILURE;
         }
     }
+
 
     public Map<String, Object> login(String username, String password, int expiredSeconds){
         Map<String, Object> map = new HashMap<>();
@@ -161,8 +163,20 @@ public class UserService implements CommunityConstant {
 
     }
 
+
     public void logout(String ticket){
         loginTicketMapper.updateStatus(ticket,1);
+    }
+
+    //查询用户凭证
+    public LoginTicket findLoginTicket(String ticket){
+        return loginTicketMapper.selectByTicket(ticket);
+    }
+
+
+    //  更新用户头像
+    public int updateHeader(int userId, String headerUrl){
+        return userMapper.updateHeader(userId, headerUrl);
     }
 
 }
