@@ -82,6 +82,17 @@ public class MapperTests {
     }
 
     @Test
+    public void testinsertPosts(){
+        DiscussPost discussPost = new DiscussPost();
+        discussPost.setUserId(001);
+        discussPost.setTitle("123");
+        discussPost.setContent("1234");
+        discussPost.setCreateTime(new Date());
+        discussPostMapper.insertDiscussPost(discussPost);
+    }
+
+
+    @Test
     public void testInserLoginTicket(){
         LoginTicket loginTicket = new LoginTicket();
         loginTicket.setUserId(101);
@@ -102,4 +113,6 @@ public class MapperTests {
         System.out.println(loginTicket);
 
     }
+
+
 }
